@@ -270,7 +270,7 @@ class caldav_driver extends calendar_driver
         );
 
         // Change password if specified
-        if (isset($cal["caldav_pass"])) {
+        if (isset($cal["caldav_pass"]) && !empty($cal["caldav_pass"])) {
             $query = $this->rc->db->query("UPDATE " . $this->db_calendars . "
             SET   caldav_pass=?
             WHERE calendar_id=?
