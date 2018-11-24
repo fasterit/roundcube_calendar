@@ -33,6 +33,10 @@ but at the time of writing this (2016-03-07) it has not yet been completed.
 
 ## Installation
 
+Install the latest 1.1 branch version of Roundcube.
+This plugin is not compatible with 1.2 and later at this time.
+See the bottom of this README for where to find some patches in case you want to port this plugin to newer Roundcube releases.
+
 Clone the repository and copy `calendar` and `libcalendaring` to the `plugins` directory
 of your roundcube installation:
 
@@ -100,4 +104,5 @@ See `/var/www/htdocs/roundcube/logs/` for errors.
 ## Support
 
 There is none. Really. This code is not for the faint of heart.    
-Patches welcome.
+Patches welcome and some for Roundcube 1.2 are available in github issues and pull requests at
+https://github.com/fasterit/roundcube_calendar .
