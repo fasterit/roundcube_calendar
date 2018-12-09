@@ -1361,7 +1361,7 @@ class libcalendaring extends rcube_plugin
 
         // establish imap connection
         $imap = $this->rc->get_storage();
-        $imap->set_mailbox($mbox);
+        $imap->set_folder($mbox);
 
         if ($uid && $mime_id) {
             list($mime_id, $index) = explode(':', $mime_id);

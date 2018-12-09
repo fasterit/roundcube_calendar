@@ -188,7 +188,7 @@ class DateTime extends VObject\Property {
             // Date-only
             return array(
                 self::DATE,
-                new \DateTime($matches['year'] . '-' . $matches['month'] . '-' . $matches['date'] . ' 00:00:00', new \DateTimeZone('UTC')),
+                new \DateTime($matches['year'] . '-' . $matches['month'] . '-' . $matches['date'] . ' 00:00:00'),
             );
         }
 

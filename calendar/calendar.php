@@ -3368,7 +3368,7 @@ class calendar extends rcube_plugin
 
     // establish imap connection
     $imap = $this->rc->get_storage();
-    $imap->set_mailbox($mbox);
+    $imap->set_folder($mbox);
 
     if ($uid && $mime_id) {
       $part = $imap->get_message_part($uid, $mime_id);
@@ -3431,7 +3431,7 @@ class calendar extends rcube_plugin
 
     // establish imap connection
     $imap = $this->rc->get_storage();
-    $imap->set_mailbox($mbox);
+    $imap->set_folder($mbox);
     $message = new rcube_message($uid);
 
     if ($message->headers) {

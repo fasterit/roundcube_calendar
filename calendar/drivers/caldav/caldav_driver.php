@@ -748,10 +748,40 @@ class caldav_driver extends calendar_driver
     {
         // shift dates to server's timezone (except for all-day events)
         if (!$event['allday']) {
+	    $orig_weekday = $event['start']->format('N');
             $event['start'] = clone $event['start'];
             $event['start']->setTimezone($this->server_timezone);
             $event['end'] = clone $event['end'];
             $event['end']->setTimezone($this->server_timezone);
+	    $weekday = $event['start']->format('N');
+	    if($orig_weekday != $weekday && !empty($event['recurrence']['BYDAY'])) {
+		$weekdays = array(
+		    'MO' => 0,
+		    'TU' => 1,
+		    'WE' => 2,
+		    'TH' => 3,
+		    'FR' => 4,
+		    'SA' => 5,
+		    'SU' => 6,
+		);
+                $vcaldays = array('MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU');
+		$vcaldays[$orig_weekday-1];
+		if ($weekday > $orig_weekday) {
+		    for ($i = 0; $i < $weekday - $orig_weekday; $i++) {
+			array_push($vcaldays, array_shift($vcaldays));
+		    }
+		} else {
+		    for ($i = 0; $i < $orig_weekday - $weekday; $i++) {
+			array_unshift($vcaldays, array_pop($vcaldays));
+		    }
+		}
+
+		$byday = "";
+                foreach (explode(',', $event['recurrence']['BYDAY']) as $day) {
+		    $byday .= ($byday == "" ? "" : ",").$vcaldays[$weekdays[$day]];
+		}
+		$event['recurrence']['BYDAY'] = $byday;
+	    }
         }
 
         // compose vcalendar-style recurrencue rule from structured data

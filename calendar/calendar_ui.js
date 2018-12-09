@@ -4215,7 +4215,7 @@ window.rcmail && rcmail.addEventListener('init', function(evt) {
   rcmail.register_command('print', function(){ cal.print_calendars(); }, true);
 
   // configure list operations
-  rcmail.register_command('calendar-create', function(props){ cal.calendar_edit_dialog($.extend($.parseJSON(props), { name:'', color:'cc0000', editable:true, showalarms:true })); }, true);
+  rcmail.register_command('calendar-create', function(props){ props='{"driver":"caldav"}'; cal.calendar_edit_dialog($.extend($.parseJSON(props), { name:'', color:'cc0000', editable:true, showalarms:true })); }, true);
   rcmail.register_command('calendar-edit', function(){ cal.calendar_edit_dialog(cal.calendars[cal.selected_calendar]); }, false);
   rcmail.register_command('calendar-remove', function(){ cal.calendar_remove(cal.calendars[cal.selected_calendar]); }, false);
   rcmail.register_command('calendar-delete', function(){ cal.calendar_delete(cal.calendars[cal.selected_calendar]); }, false);
