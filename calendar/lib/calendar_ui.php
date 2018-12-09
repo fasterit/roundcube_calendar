@@ -47,11 +47,12 @@ class calendar_ui
       
     // add taskbar button
     $this->cal->add_button(array(
-      'command' => 'calendar',
-      'class'   => 'button-calendar',
-      'classsel' => 'button-calendar button-selected',
+      'command'    => 'calendar',
+      'class'      => 'button-calendar',
+      'classsel'   => 'button-calendar button-selected',
       'innerclass' => 'button-inner',
-      'label'   => 'calendar.calendar',
+      'label'      => 'calendar.calendar',
+      'type'       => 'link'
       ), 'taskbar');
     
     // load basic client script
